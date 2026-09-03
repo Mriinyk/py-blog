@@ -22,5 +22,5 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Commentary)
 class CommentaryAdmin(admin.ModelAdmin):
     list_display = ("user", "post", "created_time")
-    search_fields = ("text", "user__username", "post__title")
+    search_fields = ["content"]
     list_filter = ("created_time", "user")

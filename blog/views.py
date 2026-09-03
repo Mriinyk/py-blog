@@ -1,14 +1,14 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Count
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import FormMixin
-from django.contrib.auth import login
-from django.contrib.auth.forms import AuthenticationForm
-from django.shortcuts import redirect, render
 
 from blog.forms import CommentaryForm
 from blog.models import Post
+
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -50,7 +50,9 @@ class PostDetailView(FormMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["comments"] = self.object.commentaries.select_related("user").all()
+        context["comments"] = (
+            self.object.commentaries.select_related("user")
+        )
         if "form" not in context:
             context["form"] = self.get_form()
         return context

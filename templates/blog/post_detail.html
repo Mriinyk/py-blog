@@ -20,14 +20,14 @@
     <h3>Коментарі ({{ post.commentaries.count }})</h3>
     <hr>
 
-    {% for comment in post.commentaries.all %}
+    {% for comment in comments %}
       <div class="media mb-3 p-3 bg-white rounded shadow-sm border">
         <div class="media-body">
           <h5 class="mt-0 h6">
             <strong>{{ comment.user.username }}</strong>
             <small class="text-muted ml-2">{{ comment.created_time|date:"d.m.Y H:i" }}</small>
           </h5>
-          <p class="mb-0">{{ comment.text|default:comment.content }}</p>
+          <p class="mb-0">{{ comment.content }}</p>
         </div>
       </div>
     {% empty %}
