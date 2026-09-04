@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Головна сторінка - Blog System{% endblock %}
+{% block title %}Home Page - Blog System{% endblock %}
 
 {% block content %}
-  <h1 class="mb-4">Останні публікації</h1>
+  <h1 class="mb-4">Latest Posts</h1>
 
   {% for post in post_list %}
     <div class="card mb-3 shadow-sm">
@@ -12,19 +12,19 @@
           <a href="{% url 'blog:post-detail' pk=post.id %}">{{ post.title }}</a>
         </h2>
         <p class="card-text text-muted small">
-          Автор: <strong>{{ post.owner.username }}</strong> | {{ post.created_time|date:"d.m.Y H:i" }}
+          Author: <strong>{{ post.owner.username }}</strong> | {{ post.created_time|date:"d.m.Y H:i" }}
         </p>
         <p class="card-text">{{ post.content|truncatewords:30 }}</p>
         <div class="d-flex justify-content-between align-items-center">
-          <a href="{% url 'blog:post-detail' pk=post.id %}" class="btn btn-primary btn-sm">Читати далі</a>
+          <a href="{% url 'blog:post-detail' pk=post.id %}" class="btn btn-primary btn-sm">Read more</a>
           <span class="badge badge-secondary">
-            Коментарі: {{ post.comment_count }}
+            Comments: {{ post.comment_count }}
           </span>
         </div>
       </div>
     </div>
   {% empty %}
-    <p>Постів поки немає.</p>
+    <p>No posts yet.</p>
   {% endfor %}
 
   {% include "includes/pagination.html" %}

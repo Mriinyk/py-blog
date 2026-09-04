@@ -34,3 +34,10 @@ class Commentary(models.Model):
         on_delete=models.CASCADE,
         related_name="commentaries",
     )
+
+    class Meta:
+        ordering = ["created_time"]
+        verbose_name_plural = "commentaries"
+
+    def __str__(self):
+        return f"{self.user.username} ({self.created_time})"

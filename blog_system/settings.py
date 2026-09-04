@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "blog",
     "crispy_forms",
     "crispy_bootstrap4",
-
 ]
 
 MIDDLEWARE = [
@@ -135,3 +134,5 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
+
+LOGOUT_REDIRECT_URL = "blog:index"
