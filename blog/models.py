@@ -32,5 +32,5 @@ class Commentary(models.Model):
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
-        related_name="commentaries",  # Перевірте, що related_name саме тут!
+        related_name="commentaries",
     )
